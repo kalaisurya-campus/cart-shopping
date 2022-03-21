@@ -1,0 +1,13 @@
+.inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 40px;
+    input {
+        padding: 10px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        border: 2px solid cyan;
+    }
+}
