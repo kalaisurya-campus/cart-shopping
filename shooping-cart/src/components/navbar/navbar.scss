@@ -1,15 +1,18 @@
 .navs {
     width: 100%;
     height: 100px;
-    background-color: red;
+    // background-color: red;
+    background: linear-gradient(180deg, rgba(68, 209, 253, 0.336) 0%, rgba(68, 209, 253, 0.4992) 100%);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    // padding:20px;
     .carts {
         width: 200px;
-        height: 100px;
+        height: 80px;
         object-fit: contain;
         margin-right: 30px;
+        padding-top: 30px;
     }
     .right_box {
         display: flex;
@@ -21,8 +24,8 @@
         background-color: white;
         border-radius: 50%;
         position: absolute;
-        right: 25px;
-        top: 2px;
+        right: 55px;
+        top: 15px;
         display: flex;
         align-items: center;
         justify-content: center;

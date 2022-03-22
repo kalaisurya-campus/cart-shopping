@@ -41,7 +41,7 @@ function CartHomepage(props) {
                 </div>
             </section>
             <div>
-                <Cart />
+                {/* <Cart /> */}
             </div>
         </div>
     );

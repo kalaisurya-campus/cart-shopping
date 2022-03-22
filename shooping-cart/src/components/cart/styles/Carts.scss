@@ -1,0 +1,70 @@
+.main-carts {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(190.81deg, #bafff7 11.23%, rgba(186, 255, 247, 0.84) 91.98%);
+    display: flex;
+    .left-carts-text {
+        width: 50%;
+        height: 100%;
+        // overflow: hidden;
+        // overflow-y: auto;
+
+        .let-order-datas {
+            height: 90%;
+            overflow: hidden;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .btss
+        {
+            width:50px;
+            height:50px;
+            border-radius: 50%;
+            margin-top: 20px;
+            border: none;
+            outline: none;
+            background-color: lightgreen;
+        }
+        .btns {
+            height: 10%;
+        }
+        .bt {
+            width: 50px;
+            height: 50px;
+            border: none;
+            outline: none;
+            border-radius: 20px;
+            font-size: 2rem;
+            background-color: lightpink;
+        }
+        .bt:hover {
+            background-color: green;
+            color: white;
+            cursor: pointer;
+        }
+        .middles {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            width: 500px;
+            background: linear-gradient(180deg, rgba(68, 209, 253, 0.29) 0%, rgba(68, 209, 253, 0.47) 100%);
+            border-radius: 40px;
+            text-align: center;
+        }
+    }
+    .right-carts-text {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        height: 100%;
+        .crts {
+            border-radius: 30px;
+            transform: rotate(-35deg);
+        }
+    }
+}
