@@ -3,7 +3,10 @@ import { useCart } from "react-use-cart";
 import "./navbar.scss";
 import cartstotal from "../../assests/ct1.png";
 import { useHistory } from "react-router-dom";
-function Navbar(props) {
+import { auth } from "../../firebasefiles";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+function Navbar({ name }) {
     const usehistory = useHistory();
     const {
         isEmpty,
@@ -15,6 +18,7 @@ function Navbar(props) {
         emptyCart,
         cartTotal,
     } = useCart();
+
     return (
         <div className="navs">
             <p>items:{totalItems}</p>
@@ -23,6 +27,24 @@ function Navbar(props) {
                     <img src={cartstotal} className="carts" />
                     <p className="numbers">{totalItems}</p>
                 </p>
+                <ToastContainer />
+            </div>
+            <div>
+                <p>{name}</p>
+            </div>
+            <div>
+                <button
+                    className="logouts"
+                    onClick={() => {
+                        toast("Logout SuccessFully");
+                        auth.signOut();
+                        setTimeout(() => {
+                            usehistory.push("/login");
+                        }, 2000);
+                    }}
+                >
+                    LogOut
+                </button>
             </div>
         </div>
     );

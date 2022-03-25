@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     // padding:20px;
     .carts {
         width: 200px;
@@ -29,5 +30,23 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        position: absolute;
+        left: 50%;
+    }
+    .logouts {
+        padding: 8px 30px;
+        border: none;
+        outline: none;
+        background-color: lightcoral;
+        color: white;
+        margin-right: 22px;
+        border-radius: 20px;
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .logouts:hover {
+        background-color: lightcyan;
+        cursor: pointer;
+        color: black;
     }
 }

@@ -3,6 +3,7 @@ import { useCart } from "react-use-cart";
 import mobileorder from "../../assests/mobileorders2.gif";
 import "./styles/Carts.scss";
 import { useHistory } from "react-router-dom";
+import { Scrollbars } from "react-custom-scrollbars-2";
 function Cart(props) {
     const usehistory = useHistory();
     const {
@@ -21,15 +22,18 @@ function Cart(props) {
             <div className="main-carts">
                 <div className="left-carts-text">
                     <div className="btns">
-                        <button onClick={() => usehistory.goBack()} className="btss">
-                            Back
+                        <button
+                            onClick={() => usehistory.goBack()}
+                            className="btss"
+                        >
+                            <ion-icon name="chevron-back-outline"></ion-icon>
                         </button>
                     </div>
                     <div className="let-order-datas">
                         {items.map((datas, index) => {
                             return (
                                 <div className="middles mt-2 mb-5">
-                                    <div class="card">
+                                    <div class="card mb-5">
                                         <img
                                             src={datas.image}
                                             class="card-img-top"
@@ -80,60 +84,26 @@ function Cart(props) {
                                             </button>
                                         </div>
                                     </div>
-                                    {/* <tr>
-                                        <td>
-                                            <img src={datas.image} />
-                                        </td>
-                                        <td>{datas.title}</td>
-                                        <td>{datas.price}</td>
-                                        <td>quanity:{datas.quantity}</td>
-                                        <td>
-                                            <button
-                                                className="btn btn-primary"
-                                                onClick={() =>
-                                                    updateItemQuantity(
-                                                        datas.id,
-                                                        datas.quantity + 1
-                                                    )
-                                                }
-                                            >
-                                                +
-                                            </button>
-                                        </td>
-                                        <td>
-                                            <button
-                                                className="btn btn-success "
-                                                onClick={() =>
-                                                    updateItemQuantity(
-                                                        datas.id,
-                                                        datas.quantity - 1
-                                                    )
-                                                }
-                                            >
-                                                -
-                                            </button>
-                                        </td>
-                                        <td>
-                                            <button
-                                                className="btn btn-danger "
-                                                onClick={() =>
-                                                    removeItem(datas.id)
-                                                }
-                                            >
-                                                Remove
-                                            </button>
-                                        </td>
-                                    </tr> */}
                                 </div>
                             );
                         })}
                         <div>
-                            <p>Total Price :{cartTotal}</p>
+                            <p className="mt-5 mb-5">
+                                Total Price :{cartTotal}
+                            </p>
+                            <div>
+                                <button
+                                    onClick={() => usehistory.push("/address")}
+                                >
+                                    Oders Details
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="right-carts-text">
-                    <img src={mobileorder} className="crts" />
+                    {/* <img src={mobileorder} className="crts" /> */}
+                    welcome
                 </div>
             </div>
         </>

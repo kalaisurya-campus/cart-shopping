@@ -4,6 +4,7 @@
     overflow: hidden;
     background: linear-gradient(190.81deg, #bafff7 11.23%, rgba(186, 255, 247, 0.84) 91.98%);
     display: flex;
+
     .left-carts-text {
         width: 50%;
         height: 100%;
@@ -11,20 +12,29 @@
         // overflow-y: auto;
 
         .let-order-datas {
-            height: 90%;
+            height: 80%;
             overflow: hidden;
             overflow-y: auto;
             margin-bottom: 20px;
         }
-        .btss
-        {
-            width:50px;
-            height:50px;
+        .btss {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             margin-top: 20px;
             border: none;
             outline: none;
             background-color: lightgreen;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-left: 10px;
+        }
+        .btss:hover {
+            background-color: gray;
+            cursor: pointer;
+            color: white;
         }
         .btns {
             height: 10%;
@@ -66,5 +76,40 @@
             border-radius: 30px;
             transform: rotate(-35deg);
         }
+    }
+}
+
+@media only screen and (width: 375px) {
+    .main-carts {
+        flex-direction: column !important;
+        display: flex;
+        height: auto !important;
+        width: 100%;
+    }
+    .left-carts-text {
+        width: 100% !important;
+    }
+    .right-carts-text {
+        width: 100% !important;
+    }
+    .card {
+        width: 100%;
+        background: linear-gradient(180deg, rgba(68, 209, 253, 0.29) 0%, rgba(68, 209, 253, 0.47) 100%);
+        border-radius: 40px;
+        text-align: center;
+    }
+}
+@media only screen and (width: 600px) {
+    .main-carts {
+        flex-direction: column !important;
+        display: flex;
+        height: auto !important;
+        width: 100% !important;
+    }
+    .left-carts-text {
+        width: 100% !important;
+    }
+    .right-carts-text {
+        width: 100% !important;
     }
 }

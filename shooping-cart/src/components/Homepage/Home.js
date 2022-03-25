@@ -18,7 +18,7 @@ function Home(props) {
                         </h1>
                         <div className="btn">
                             <button className="btns">
-                                <NavLink to="carthome" className="links">
+                                <NavLink to="/login" className="links">
                                     Start
                                 </NavLink>
                             </button>

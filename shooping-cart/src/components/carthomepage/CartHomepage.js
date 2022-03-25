@@ -4,11 +4,15 @@ import "./styles/CartHomepage.scss";
 import data from "../datasprovides/Data";
 import Cart from "../cart/Cart";
 import Navbar from "../navbar/Navbar";
+import { useHistory, useParams } from "react-router-dom";
 function CartHomepage(props) {
     const [serach, Setserach] = useState("");
+    const usehistroy = useHistory();
+    const { name } = useParams();
+    console.log("received names", name);
     return (
         <div className="main-carthome">
-            <Navbar />
+            <Navbar  name={name}/>
             <h1>Home Cart</h1>
 
             <section className="py-4 container">
@@ -40,9 +44,7 @@ function CartHomepage(props) {
                         })}
                 </div>
             </section>
-            <div>
-                {/* <Cart /> */}
-            </div>
+            <div>{/* <Cart /> */}</div>
         </div>
     );
 }
