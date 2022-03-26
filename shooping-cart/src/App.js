@@ -8,10 +8,14 @@ import Address from "./components/addresspage/Address";
 import OrderDate from "./components/oderpagesoverall/OrderDate";
 import Login from "./components/login/Login";
 import Signup from "./components/signups/Signup";
+import ForgetPassword from "./components/forgetpassword/ForgetPassword";
+import ResetPassword from "./components/resetpassword/ResetPassword";
+import Navbar from "./components/navbar/Navbar";
 function App() {
     return (
         <div className="App">
             <Router>
+             
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route path="/carthome/:name" component={CartHomepage} />
@@ -20,6 +24,8 @@ function App() {
                     <Route path="/orders" component={OrderDate} />
                     <Route path="/login" component={Login} />
                     <Route path="/signup" component={Signup} />
+                    <Route path="/forgetpassword" component={ForgetPassword} />
+                    <Route path="/resetpassword" component={ResetPassword} />
                 </Switch>
             </Router>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./styles/Login.scss";
+
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { auth } from "../../firebasefiles";
@@ -11,7 +11,7 @@ import g from "../../assests/g.png";
 import f from "../../assests/f.png";
 import em from "../../assests/et1";
 import em2 from "../../assests/wr.png";
-function Login(props) {
+function ForgetPassword(props) {
     const {
         register,
         handleSubmit,
@@ -19,7 +19,6 @@ function Login(props) {
     } = useForm();
     const usehistory = useHistory();
     const [email, SetEmail] = useState("");
-    const [password, SetPassword] = useState("");
 
     const submits = async () => {
         // if (name == "kalai" && email == "kalai@gmail.com") {
@@ -27,14 +26,11 @@ function Login(props) {
         //     alert("success Page");
         // }
         try {
-            const result = await auth.signInWithEmailAndPassword(
-                email,
-                password
-            );
-            toast.success("Login SuccessFully");
+            const result = await auth.sendPasswordResetEmail(email);
+            toast.success("Check Your Email");
 
             setTimeout(() => {
-                usehistory.push(`/carthome/${result.user.email}/`);
+                usehistory.push(`/login`);
             }, 1500);
             console.log("received", result.user.email);
         } catch (err) {
@@ -70,7 +66,7 @@ function Login(props) {
                     <h1 className="text-center mt-5 to">
                         Welcome Too <br />
                     </h1>
-                    <p className="text-center to ms-5">Login Page</p>
+                    <p className="text-center to ms-5">ForgetPassword Page</p>
                     <ToastContainer />
                     <div className="image1">
                         <img src={ass} />
@@ -79,7 +75,7 @@ function Login(props) {
                 <div className="right-login col-sm-10 col-md-10 col-lg-6">
                     <div className="forms">
                         <form onSubmit={handleSubmit(submits)}>
-                            <h1 className="text-center mb-5">Login</h1>
+                            <h1 className="text-center mb-5">ForgetPassword</h1>
                             <div className="ms">
                                 <label>Email:</label>
                                 <input
@@ -98,44 +94,8 @@ function Login(props) {
                                     </span>
                                 )}
                             </div>
-                            <div className="ms">
-                                <label className="mt-4">Password:</label>
-                                <input
-                                    {...register("password", {
-                                        required: true,
-                                        minLength: {
-                                            value: 6,
-                                            message:
-                                                "Minimum Password Type 6 Characters",
-                                        },
-                                    })}
-                                    type="text"
-                                    name="password"
-                                    value={password}
-                                    onChange={(e) =>
-                                        SetPassword(e.target.value)
-                                    }
-                                    placeholder="Enter your password"
-                                    minlength="6"
-                                />
-                                {errors.password && (
-                                    <span style={{ color: "red" }}>
-                                        password field is Empty
-                                    </span>
-                                )}
-                            </div>
-                            <div>
-                                <p
-                                    className="text-end mt-2 "
-                                    style={{ color: "blue", fontSize: "16px" }}
-                                    onClick={() =>
-                                        usehistory.push("/forgetpassword")
-                                    }
-                                >
-                                    Forget Password
-                                </p>
-                            </div>
-                            <button className="sub mt-1">Login</button>
+
+                            <button className="sub mt-5">Reset Password</button>
 
                             <div className="logos">
                                 <div>
@@ -149,9 +109,9 @@ function Login(props) {
                                         fontSize: "18px",
                                         fontWeight: "700",
                                     }}
-                                    onClick={() => usehistory.push("/signup")}
+                                    onClick={() => usehistory.push("/login")}
                                 >
-                                    Register New User
+                                    Login
                                 </p>
                                 <div>
                                     <img src={f} className="f" />
@@ -165,4 +125,4 @@ function Login(props) {
     );
 }
 
-export default Login;
+export default ForgetPassword;

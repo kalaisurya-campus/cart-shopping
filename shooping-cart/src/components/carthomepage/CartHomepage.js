@@ -5,6 +5,8 @@ import data from "../datasprovides/Data";
 import Cart from "../cart/Cart";
 import Navbar from "../navbar/Navbar";
 import { useHistory, useParams } from "react-router-dom";
+import Offerdata from "../offerdatas/Offerdata";
+import wave1 from "../../assests/waves/wave.svg";
 function CartHomepage(props) {
     const [serach, Setserach] = useState("");
     const usehistroy = useHistory();
@@ -12,8 +14,10 @@ function CartHomepage(props) {
     console.log("received names", name);
     return (
         <div className="main-carthome">
-            <Navbar  name={name}/>
-            <h1>Home Cart</h1>
+            <Navbar name={name} />
+            {/* <div className="wave">
+        <img src={wave1}/>
+        </div> */}
 
             <section className="py-4 container">
                 <div className="inputs">
@@ -23,6 +27,9 @@ function CartHomepage(props) {
                         value={serach}
                         onChange={(e) => Setserach(e.target.value)}
                     />
+                </div>
+                <div className="mt-5">
+                    <Offerdata />
                 </div>
                 <div className="row justify-content-center">
                     {data.productdata

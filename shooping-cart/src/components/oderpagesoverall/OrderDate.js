@@ -2,11 +2,8 @@ import React, { useEffect } from "react";
 import "./styles/OrderDate.scss";
 import { useCart } from "react-use-cart";
 
-
 function OrderDate(props) {
-    useEffect(() => {
-      
-    });
+    useEffect(() => {});
     const {
         isEmpty,
         totalUniqueItems,
@@ -19,7 +16,7 @@ function OrderDate(props) {
     } = useCart();
     return (
         <div className="main-orders">
-            <div className="inside-orders">gtrehfghfghtret</div>
+            <div className="inside-orders"></div>
         </div>
     );
 }

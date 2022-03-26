@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import "./styles/Login.scss";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+
+import { useHistory, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { auth } from "../../firebasefiles";
 
@@ -11,30 +11,36 @@ import g from "../../assests/g.png";
 import f from "../../assests/f.png";
 import em from "../../assests/et1";
 import em2 from "../../assests/wr.png";
-function Login(props) {
+
+function ResetPassword() {
+    const location = useLocation();
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
     const usehistory = useHistory();
-    const [email, SetEmail] = useState("");
+
     const [password, SetPassword] = useState("");
+    // useEffect(()=>{
+    //     const queryParams = new URLSearchParams(location.serach);
+    //     const oobcode = queryParams.get("oobcode");
+    //     if(!oob)
+    // })
 
     const submits = async () => {
         // if (name == "kalai" && email == "kalai@gmail.com") {
         //     usehistory.push("/carthome");
         //     alert("success Page");
         // }
+        const queryParams = new URLSearchParams(location.serach);
+        const oobCode = queryParams.get("oobCode");
         try {
-            const result = await auth.signInWithEmailAndPassword(
-                email,
-                password
-            );
-            toast.success("Login SuccessFully");
+            const result = await auth.confirmPasswordReset(oobCode, password);
+            toast.success("Password Change Successfully");
 
             setTimeout(() => {
-                usehistory.push(`/carthome/${result.user.email}/`);
+                usehistory.push(`/login`);
             }, 1500);
             console.log("received", result.user.email);
         } catch (err) {
@@ -70,7 +76,7 @@ function Login(props) {
                     <h1 className="text-center mt-5 to">
                         Welcome Too <br />
                     </h1>
-                    <p className="text-center to ms-5">Login Page</p>
+                    <p className="text-center to ms-5">Change Password Page</p>
                     <ToastContainer />
                     <div className="image1">
                         <img src={ass} />
@@ -79,25 +85,10 @@ function Login(props) {
                 <div className="right-login col-sm-10 col-md-10 col-lg-6">
                     <div className="forms">
                         <form onSubmit={handleSubmit(submits)}>
-                            <h1 className="text-center mb-5">Login</h1>
-                            <div className="ms">
-                                <label>Email:</label>
-                                <input
-                                    {...register("email", {
-                                        required: "no records",
-                                    })}
-                                    type="email"
-                                    name="email"
-                                    value={email}
-                                    onChange={(e) => SetEmail(e.target.value)}
-                                    placeholder="Enter your Name"
-                                />
-                                {errors.email && (
-                                    <span style={{ color: "red" }}>
-                                        email field is Empty
-                                    </span>
-                                )}
-                            </div>
+                            <h1 className="text-center mb-5">
+                                Change Password
+                            </h1>
+
                             <div className="ms">
                                 <label className="mt-4">Password:</label>
                                 <input
@@ -124,18 +115,8 @@ function Login(props) {
                                     </span>
                                 )}
                             </div>
-                            <div>
-                                <p
-                                    className="text-end mt-2 "
-                                    style={{ color: "blue", fontSize: "16px" }}
-                                    onClick={() =>
-                                        usehistory.push("/forgetpassword")
-                                    }
-                                >
-                                    Forget Password
-                                </p>
-                            </div>
-                            <button className="sub mt-1">Login</button>
+
+                            <button className="sub mt-1">Reset Password</button>
 
                             <div className="logos">
                                 <div>
@@ -149,9 +130,9 @@ function Login(props) {
                                         fontSize: "18px",
                                         fontWeight: "700",
                                     }}
-                                    onClick={() => usehistory.push("/signup")}
+                                    onClick={() => usehistory.push("/login")}
                                 >
-                                    Register New User
+                                    Login
                                 </p>
                                 <div>
                                     <img src={f} className="f" />
@@ -165,4 +146,4 @@ function Login(props) {
     );
 }
 
-export default Login;
+export default ResetPassword;
