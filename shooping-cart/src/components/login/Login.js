@@ -11,6 +11,8 @@ import g from "../../assests/g.png";
 import f from "../../assests/f.png";
 import em from "../../assests/et1";
 import em2 from "../../assests/wr.png";
+import PasswordSrength from "./component/PasswordSrength";
+import EmailSrength from "./component/EmailSrength";
 function Login(props) {
     const {
         register,
@@ -37,6 +39,11 @@ function Login(props) {
                 usehistory.push(`/carthome/${result.user.email}/`);
             }, 1500);
             console.log("received", result.user.email);
+            console.log("result token", result.user.refreshToken);
+            localStorage.setItem(
+                "token new users",
+                JSON.stringify(result.user.refreshToken)
+            );
         } catch (err) {
             console.log(err);
             switch (err.code) {
@@ -92,6 +99,9 @@ function Login(props) {
                                     onChange={(e) => SetEmail(e.target.value)}
                                     placeholder="Enter your Name"
                                 />
+                                <p style={{ marginTop: "-8px" }}>
+                                    <EmailSrength email={email} />
+                                </p>
                                 {errors.email && (
                                     <span style={{ color: "red" }}>
                                         email field is Empty
@@ -99,7 +109,7 @@ function Login(props) {
                                 )}
                             </div>
                             <div className="ms">
-                                <label className="mt-4">Password:</label>
+                                <label className="mt-0">Password:</label>
                                 <input
                                     {...register("password", {
                                         required: true,
@@ -118,6 +128,10 @@ function Login(props) {
                                     placeholder="Enter your password"
                                     minlength="6"
                                 />
+                                <p style={{ marginTop: "-8px" }}>
+                                    {" "}
+                                    <PasswordSrength password={password} />
+                                </p>
                                 {errors.password && (
                                     <span style={{ color: "red" }}>
                                         password field is Empty
@@ -126,7 +140,7 @@ function Login(props) {
                             </div>
                             <div>
                                 <p
-                                    className="text-end mt-2 "
+                                    className="text-end mt-2"
                                     style={{ color: "blue", fontSize: "16px" }}
                                     onClick={() =>
                                         usehistory.push("/forgetpassword")

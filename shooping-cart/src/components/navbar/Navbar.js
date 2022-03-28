@@ -41,6 +41,10 @@ function Navbar({ name }) {
                         setTimeout(() => {
                             usehistory.push("/login");
                         }, 2000);
+                        let GetLocal =
+                            localStorage.removeItem("token new users");
+
+                        console.log("received logout", JSON.parse(GetLocal));
                     }}
                 >
                     LogOut

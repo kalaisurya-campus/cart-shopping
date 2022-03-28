@@ -11,6 +11,7 @@ import g from "../../assests/g.png";
 import f from "../../assests/f.png";
 import em from "../../assests/et1";
 import em2 from "../../assests/wr.png";
+import EmailSrength from "../login/component/EmailSrength";
 function ForgetPassword(props) {
     const {
         register,
@@ -88,6 +89,9 @@ function ForgetPassword(props) {
                                     onChange={(e) => SetEmail(e.target.value)}
                                     placeholder="Enter your Name"
                                 />
+                                <p style={{ marginTop: "-8px" }}>
+                                    <EmailSrength email={email} />
+                                </p>
                                 {errors.email && (
                                     <span style={{ color: "red" }}>
                                         email field is Empty
@@ -95,7 +99,7 @@ function ForgetPassword(props) {
                                 )}
                             </div>
 
-                            <button className="sub mt-5">Reset Password</button>
+                            <button className="sub">Reset Password</button>
 
                             <div className="logos">
                                 <div>

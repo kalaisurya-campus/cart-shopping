@@ -11,11 +11,11 @@ import Signup from "./components/signups/Signup";
 import ForgetPassword from "./components/forgetpassword/ForgetPassword";
 import ResetPassword from "./components/resetpassword/ResetPassword";
 import Navbar from "./components/navbar/Navbar";
+import ScrollParallaxs from "./components/parallaxpage/ScrollParallaxs";
 function App() {
     return (
         <div className="App">
             <Router>
-             
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route path="/carthome/:name" component={CartHomepage} />
@@ -26,6 +26,7 @@ function App() {
                     <Route path="/signup" component={Signup} />
                     <Route path="/forgetpassword" component={ForgetPassword} />
                     <Route path="/resetpassword" component={ResetPassword} />
+                    <Route path="/scrollparallax" component={ScrollParallaxs} />
                 </Switch>
             </Router>
         </div>

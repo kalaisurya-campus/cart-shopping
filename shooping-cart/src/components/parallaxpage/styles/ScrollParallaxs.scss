@@ -1,0 +1,11 @@
+.box {
+    width: 100%;
+    height: 100vh;
+    // border: 2px solid red;
+    overflow: hidden;
+    .imag-sc {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+    }
+}

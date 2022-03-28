@@ -8,8 +8,10 @@ import "react-toastify/dist/ReactToastify.css";
 import ass from "../../assests/a3.png";
 import g from "../../assests/g.png";
 import f from "../../assests/f.png";
-import em from '../../assests/et1';
-import em2 from '../../assests/wr.png';
+import em from "../../assests/et1";
+import em2 from "../../assests/wr.png";
+import EmailSrength from "../login/component/EmailSrength";
+import PasswordSrength from "../login/component/PasswordSrength";
 function Signup(props) {
     const {
         register,
@@ -26,7 +28,7 @@ function Signup(props) {
         console.log(email, password);
 
         try {
-            toast.success("Signup SccessFully Welocme",<img src={em}/>);
+            toast.success("Signup SccessFully Welocme", <img src={em} />);
             const result = await auth.createUserWithEmailAndPassword(
                 email,
                 password
@@ -39,7 +41,11 @@ function Signup(props) {
         } catch (err) {
             switch (err.code) {
                 case "auth/invalid-email":
-                    toast.error("Email Id Is Not Match", err.message,<imgs src={em2}/>);
+                    toast.error(
+                        "Email Id Is Not Match",
+                        err.message,
+                        <imgs src={em2} />
+                    );
                     break;
                 case "auth/user-disabled":
                     toast.error("user Is Disabled", err.message);
@@ -157,6 +163,9 @@ function Signup(props) {
                                     onChange={(e) => SetEmail(e.target.value)}
                                     placeholder="Enter your Name"
                                 />
+                                <p style={{ marginTop: "-8px" }}>
+                                    <EmailSrength email={email} />
+                                </p>
                                 {errors.email && (
                                     <span style={{ color: "red" }}>
                                         email field is Empty
@@ -183,6 +192,9 @@ function Signup(props) {
                                     placeholder="Enter your password"
                                     minlength="6"
                                 />
+                                <p style={{ marginTop: "-8px" }}>
+                                    <PasswordSrength password={password} />
+                                </p>
                                 {errors.password && (
                                     <span style={{ color: "red" }}>
                                         password field is Empty
